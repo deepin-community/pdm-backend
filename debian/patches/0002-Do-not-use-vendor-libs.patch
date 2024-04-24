@@ -1,0 +1,127 @@
+From: Boyuan Yang <byang@debian.org>
+Date: Tue, 13 Jun 2023 10:45:49 -0400
+Subject: Do not use vendor libs
+
+Forwarded: not-needed
+---
+ src/pdm/backend/config.py            | 6 +++---
+ src/pdm/backend/editable.py          | 2 +-
+ src/pdm/backend/hooks/version/scm.py | 2 +-
+ src/pdm/backend/intree.py            | 2 +-
+ src/pdm/backend/sdist.py             | 2 +-
+ src/pdm/backend/utils.py             | 8 ++++----
+ src/pdm/backend/wheel.py             | 6 +++---
+ 7 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/src/pdm/backend/config.py b/src/pdm/backend/config.py
+index 09cbe65..56abee1 100644
+--- a/src/pdm/backend/config.py
++++ b/src/pdm/backend/config.py
+@@ -6,8 +6,8 @@ import sys
+ from pathlib import Path
+ from typing import TYPE_CHECKING, Any, TypeVar
+ 
+-from pdm.backend._vendor import tomli_w
+-from pdm.backend._vendor.pyproject_metadata import ConfigurationError, StandardMetadata
++import tomli_w
++from pyproject_metadata import ConfigurationError, StandardMetadata
+ from pdm.backend.exceptions import ConfigError, ValidationError
+ from pdm.backend.structures import Table
+ from pdm.backend.utils import find_packages_iter
+@@ -15,7 +15,7 @@ from pdm.backend.utils import find_packages_iter
+ if sys.version_info >= (3, 11):
+     import tomllib
+ else:
+-    import pdm.backend._vendor.tomli as tomllib
++    import tomli as tomllib
+ 
+ T = TypeVar("T")
+ 
+diff --git a/src/pdm/backend/editable.py b/src/pdm/backend/editable.py
+index 2814c6f..36b868b 100644
+--- a/src/pdm/backend/editable.py
++++ b/src/pdm/backend/editable.py
+@@ -6,7 +6,7 @@ from pathlib import Path
+ 
+ from editables import EditableProject
+ 
+-from pdm.backend._vendor.packaging.utils import canonicalize_name
++from packaging.utils import canonicalize_name
+ from pdm.backend.exceptions import ConfigError, PDMWarning
+ from pdm.backend.hooks.base import Context
+ from pdm.backend.utils import to_filename
+diff --git a/src/pdm/backend/hooks/version/scm.py b/src/pdm/backend/hooks/version/scm.py
+index 64c975d..0e7589a 100644
+--- a/src/pdm/backend/hooks/version/scm.py
++++ b/src/pdm/backend/hooks/version/scm.py
+@@ -15,7 +15,7 @@ from datetime import datetime
+ from pathlib import Path
+ from typing import TYPE_CHECKING, Iterable, NamedTuple
+ 
+-from pdm.backend._vendor.packaging.version import Version
++from packaging.version import Version
+ 
+ if TYPE_CHECKING:
+     from _typeshed import StrPath
+diff --git a/src/pdm/backend/intree.py b/src/pdm/backend/intree.py
+index 4a77e83..b19a9d7 100644
+--- a/src/pdm/backend/intree.py
++++ b/src/pdm/backend/intree.py
+@@ -8,7 +8,7 @@ import pdm.backend as api
+ if sys.version_info >= (3, 11):
+     import tomllib
+ else:
+-    import pdm.backend._vendor.tomli as tomllib
++    import tomli as tomllib
+ 
+ 
+ def get_requires_for_build_wheel(
+diff --git a/src/pdm/backend/sdist.py b/src/pdm/backend/sdist.py
+index a08647f..feb4ae6 100644
+--- a/src/pdm/backend/sdist.py
++++ b/src/pdm/backend/sdist.py
+@@ -8,7 +8,7 @@ from pathlib import Path
+ from posixpath import join as pjoin
+ from typing import Iterable
+ 
+-from pdm.backend._vendor.packaging.utils import canonicalize_name
++from packaging.utils import canonicalize_name
+ from pdm.backend.base import Builder
+ from pdm.backend.hooks import Context
+ from pdm.backend.utils import normalize_file_permissions, safe_version, to_filename
+diff --git a/src/pdm/backend/utils.py b/src/pdm/backend/utils.py
+index 4bcd568..07e81cd 100644
+--- a/src/pdm/backend/utils.py
++++ b/src/pdm/backend/utils.py
+@@ -13,10 +13,10 @@ from fnmatch import fnmatchcase
+ from pathlib import Path
+ from typing import Callable, Generator, Iterable, Match
+ 
+-from pdm.backend._vendor.packaging import tags
+-from pdm.backend._vendor.packaging.markers import Marker
+-from pdm.backend._vendor.packaging.requirements import Requirement
+-from pdm.backend._vendor.packaging.version import InvalidVersion, Version
++from packaging import tags
++from packaging.markers import Marker
++from packaging.requirements import Requirement
++from packaging.version import InvalidVersion, Version
+ from pdm.backend.macosx_platform import calculate_macosx_platform_tag
+ 
+ 
+diff --git a/src/pdm/backend/wheel.py b/src/pdm/backend/wheel.py
+index aafb9db..afeedd7 100644
+--- a/src/pdm/backend/wheel.py
++++ b/src/pdm/backend/wheel.py
+@@ -14,9 +14,9 @@ from base64 import urlsafe_b64encode
+ from pathlib import Path
+ from typing import IO, Any, Iterable, Mapping, NamedTuple, cast
+ 
+-from pdm.backend._vendor.packaging import tags
+-from pdm.backend._vendor.packaging.specifiers import SpecifierSet
+-from pdm.backend._vendor.packaging.utils import canonicalize_name
++from packaging import tags
++from packaging.specifiers import SpecifierSet
++from packaging.utils import canonicalize_name
+ from pdm.backend.base import Builder
+ from pdm.backend.hooks import Context
+ from pdm.backend.hooks.setuptools import SetuptoolsBuildHook

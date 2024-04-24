@@ -1,5 +1,56 @@
-template-repository (1.0-1) unstable; urgency=medium
+pdm-backend (2.1.8+ds1-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream release.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Boyuan Yang <byang@debian.org>  Tue, 16 Jan 2024 10:48:38 -0500
+
+pdm-backend (2.1.7+ds1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Boyuan Yang <byang@debian.org>  Wed, 11 Oct 2023 10:48:34 -0400
+
+pdm-backend (2.1.6+ds1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Boyuan Yang <byang@debian.org>  Tue, 19 Sep 2023 20:22:20 -0400
+
+pdm-backend (2.1.4+ds1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Boyuan Yang <byang@debian.org>  Mon, 17 Jul 2023 15:50:54 -0400
+
+pdm-backend (2.1.2+ds1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Boyuan Yang <byang@debian.org>  Thu, 06 Jul 2023 17:01:39 -0400
+
+pdm-backend (2.1.0+ds1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches: Refresh patches.
+
+ -- Boyuan Yang <byang@debian.org>  Tue, 13 Jun 2023 10:47:17 -0400
+
+pdm-backend (2.0.5+ds1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches: Refresh patches.
+
+ -- Boyuan Yang <byang@debian.org>  Fri, 10 Mar 2023 14:29:18 -0500
+
+pdm-backend (2.0.2+ds1-2) unstable; urgency=medium
+
+  * Source-only rebuild.
+
+ -- Boyuan Yang <byang@debian.org>  Fri, 24 Feb 2023 14:45:54 -0500
+
+pdm-backend (2.0.2+ds1-1) unstable; urgency=medium
+
+  * Initial release, upstream renamed from pdm-pep517.
+    (Closes: #1030789)
+
+ -- Boyuan Yang <byang@debian.org>  Tue, 07 Feb 2023 09:34:57 -0500

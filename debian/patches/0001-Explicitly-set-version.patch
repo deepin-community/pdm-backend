@@ -1,0 +1,22 @@
+From: Boyuan Yang <byang@debian.org>
+Date: Tue, 13 Jun 2023 10:42:15 -0400
+Subject: Explicitly set version
+
+Forwarded: not-needed
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 31d3a1d..2091da2 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -10,7 +10,7 @@ license = {text = "MIT"}
+ requires-python = ">=3.7"
+ readme = "README.md"
+ keywords = ["packaging", "PEP 517", "build"]
+-dynamic = ["version"]
++version = "2.1.8"
+ 
+ classifiers = [
+     "Development Status :: 5 - Production/Stable",

@@ -1,0 +1,4 @@
+version=4
+opts="dversionmangle=auto,uversionmangle=s/a\d//,filenamemangle=s%(?:.*?)?v?(\d[\d.]*@ARCHIVE_EXT@)%@PACKAGE@-$1%,oversionmangle=s/(.*)/$1+ds1/" \
+ https://github.com/pdm-project/pdm-backend/tags \
+ (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@

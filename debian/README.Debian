@@ -1,0 +1,21 @@
+Handling Debian Python packages with pdm-backend backend
+-------------------------------------------------------
+
+If you are preparing Python packages that use pdm-backend as build
+backend as well as its Dynamic Version feature [1], the automatic
+version detection will not work out-of-box because of the lack of
+.git directory during packaging. Please consider using environment
+variable in debian/rules file to pass the version string instead:
+
+```makefile
+include /usr/share/dpkg/pkg-info.mk
+export PDM_BUILD_SCM_VERSION = $(DEB_VERSION_UPSTREAM)
+```
+
+This will work when $(DEB_VERSION_UPSTREAM) is a reasonable value (e.g.,
+using X.Y.Z format). Packages with repacked version string may need
+more sophisticated handling.
+
+[1] https://pdm-backend.fming.dev/metadata/#dynamic-project-version
+
+ -- Boyuan Yang <byang@debian.org>  Wed, 17 Aug 2022 14:50:40 -0400
